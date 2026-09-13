@@ -2,39 +2,74 @@ return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
-
-    local bubble = { left = '', right = ' ' }
     require("lualine").setup({
       options = {
-        theme = "auto", -- Automatically matches your active colorscheme (like Monokai)
-        globalstatus = true, -- Uses one statusline across all splits instead of one per window
+        theme = "auto", -- Retains your automatic colorscheme matching
+        globalstatus = true, -- Keeps one statusline across all splits
+        component_separators = '',
+        section_separators = { left = '', right = '' },
       },
-      
       sections = {
         lualine_a = { 
-          { "mode", separator = bubble, padding = 1 } 
+          -- Adds the left outer bubble
+          { 'mode', separator = { left = '' }, padding = { right = 2 } } 
         },
-        lualine_b = {
-          { "branch", separator = bubble, padding = 1 },
-          { "diff", separator = bubble, padding = 1 },
-          { "diagnostics", separator = bubble, padding = 1 },
-        },
-        lualine_c = {
-          { "filename", separator = bubble, padding = 1 },
-        },
-        lualine_x = {
-          { "encoding", separator = bubble, padding = 1 },
-          { "fileformat", separator = bubble, padding = 1 },
-          { "filetype", separator = bubble, padding = 1 },
-        },
-        lualine_y = {
-          { "progress", separator = bubble, padding = 1 },
-        },
+        lualine_b = { 'branch', 'diff', 'diagnostics' },
+        lualine_c = { 'filename' },
+        lualine_x = { 'encoding', 'fileformat' },
+        lualine_y = { 'filetype', 'progress' },
         lualine_z = {
-          -- We drop the trailing space on the very last bubble so it sits flush against the right wall
-          { "location", separator = { left = '', right = '' }, padding = 1 },
+          -- Adds the right outer bubble
+          { 'location', separator = { right = '' }, padding = { left = 2 } },
         },
+      },
+      inactive_sections = {
+        lualine_a = { 'filename' },
+        lualine_b = {},
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = { 'location' },
       },
     })
   end,
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
