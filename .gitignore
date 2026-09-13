@@ -3,6 +3,8 @@ test.sh
 .luarc.json
 nvim
 
+lazy-lock.json
+
 spell/
 
 # In your personal fork, you likely want to comment this, since it's recommended to track
